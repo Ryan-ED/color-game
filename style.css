@@ -1,0 +1,23 @@
+body {
+    background: #232323;
+}
+
+/* Each square takes up about a third of the with of the container, with some margin for spacing */
+.square {
+    width: 30%;
+    background: blue;
+    margin: 1.66%;
+    padding-bottom: 30%;
+    float: left;
+
+}
+
+/* Centers the div containing the squares and narrows it */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: white
+}
