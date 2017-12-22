@@ -1,19 +1,12 @@
 //NOTE: In South Africa we use UK English so I spell the word "colour" with a "u"!
 
-//Hard coded some colours into an array just for testing. It will be randomized later
-var colours = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 0, 255)"
-];
+//Colours are now randomly generated using a DIY RGB randomizer. Number argument will decide difficulty. Will come later
+var colours = generateColours(6);
 
 //Made the list of squares into a variable.
 var squares = document.querySelectorAll(".square");
 //Put a randomized colour into a variable to serve as the "correct" colour.
-var pickedColour = randomColour();
+var pickedColour = pickColour();
 //Span tag in the <h1>
 var colourDisplay = document.getElementById("colourDisplay");
 //Span tag to display a message when a user clicks on a square
@@ -38,9 +31,9 @@ function colourGuess(){
     if(clickedColour === pickedColour){
 
         messageDisplay.textContent = "Correct!";
-        //Function that makes all the squares the same colour as the "correct" square
+        //Function that makes all the squares and the header the same colour as the "correct" square
         changeColours(clickedColour);
-        
+        document.querySelector("h1").style.backgroundColor = pickedColour;
     }
     else {
         //Changes the background colour of the square to match that of the body
@@ -57,7 +50,27 @@ function changeColours(colour){
 }
 
 //Randomizes the "correct" colour
-function randomColour(){
+function pickColour(){
     var random = Math.floor(Math.random() * colours.length);
     return colours[random];
+}
+
+//Generate an array of randomized colours
+function generateColours(num){
+    var arrColours = [];
+
+    for(var i = 0; i < num; i ++){
+        arrColours.push(randomColour());
+    }
+
+    return arrColours;
+}
+
+//Randomized the red, green and blue values individually and concatenates them
+function randomColour(){
+    var red = Math.floor(Math.random() * 256);
+    var green = Math.floor(Math.random() * 256);
+    var blue = Math.floor(Math.random() * 256);
+
+    return "rgb(" + red + ", " + green + ", " + blue + ")";
 }
