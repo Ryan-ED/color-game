@@ -60,6 +60,7 @@ h1 {
 /* Restyled the buttons. Total makeover here */
 button {
     border: none;
+    outline: none;
     background-color: white;
     font-family: "Montserrat";
     text-transform: uppercase;
