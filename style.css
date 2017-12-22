@@ -30,3 +30,8 @@ h1 {
     text-align: center;
     background-color: white;
 }
+
+/* This class will toggle on and off depending on which button (easy or hard) is selected */
+.selected {
+    background-color: blue;
+}

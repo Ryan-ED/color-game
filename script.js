@@ -1,7 +1,9 @@
 //NOTE: In South Africa we use UK English so I spell the word "colour" with a "u"!
 
+//This variable keeps track of the difficulty by setting the number of squares displayed
+var numSquares = 6;
 //Colours are now randomly generated using a DIY RGB randomizer. Number argument will decide difficulty. Will come later
-var colours = generateColours(6);
+var colours = generateColours(numSquares);
 
 //Made the list of squares into a variable.
 var squares = document.querySelectorAll(".square");
@@ -13,6 +15,54 @@ var colourDisplay = document.getElementById("colourDisplay");
 var messageDisplay = document.getElementById("message");
 var h1 = document.querySelector("h1");
 var reset = document.getElementById("reset");
+
+
+//Variables for the easy and hard buttons
+var easyBtn = document.querySelector("#easy");
+var hardBtn = document.querySelector("#hard");
+
+//Click funtion to set mode to easy or hard
+easyBtn.addEventListener("click", function(){
+    //Highlights the button
+    this.classList.add("selected");
+    hardBtn.classList.remove("selected");
+    //Set number of squares displayed
+    numSquares = 3;
+    //Sets number of colours generated
+    colours = generateColours(numSquares);
+    pickedColour = pickColour();
+    colourDisplay.textContent = pickedColour;
+
+    for(var i = 0; i < squares.length; i++){
+
+        //If there are still colours in the array (3 in easy mode)
+        if(colours[i]){
+            //Set each square to a colour in the colours array (now only 3)
+            squares[i].style.backgroundColor = colours[i];
+        }
+        //Once there are no more colours generated
+        else{
+            //Hide all squares without colour
+            squares[i].style.display = "none";
+        }
+    }
+});
+
+//Same login here, just reversed. Basically resets everything to normal state
+hardBtn.addEventListener("click", function(){
+    this.classList.add("selected");
+    easyBtn.classList.remove("selected");
+    numSquares = 6;
+    colours = generateColours(numSquares);
+    pickedColour = pickColour();
+    colourDisplay.textContent = pickedColour;
+
+    for(var i = 0; i < squares.length; i++){
+        //Restores all squares and reassigns colours
+        squares[i].style.backgroundColor = colours[i];
+        squares[i].style.display = "block";
+    }
+});
 
 //Set the "correct" colour to be displayed in the <span> tag of the <h1>
 colourDisplay.textContent = pickedColour;
@@ -82,7 +132,7 @@ function randomColour(){
 //Added a click function to reset button.
 reset.addEventListener("click", function(){
     //Generate new set of square colours
-    colours = generateColours(6);
+    colours = generateColours(numSquares);
     //Set each square to a colour in the array
     for(var i = 0; i < squares.length; i++){
         squares[i].style.backgroundColor = colours[i];
@@ -92,6 +142,6 @@ reset.addEventListener("click", function(){
     colourDisplay.textContent = pickedColour;
     //Reset <h1> background colour
     h1.style.backgroundColor = "#232323";
-
+    messageDisplay.textContent = "";
     this.textContent = "New Colours";
 });
