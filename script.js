@@ -45,7 +45,8 @@ easyBtn.addEventListener("click", function(){
             //Hide all squares without colour
             squares[i].style.display = "none";
         }
-    }
+    h1.style.backgroundColor = "steelblue";
+}
 });
 
 //Same login here, just reversed. Basically resets everything to normal state
@@ -61,7 +62,8 @@ hardBtn.addEventListener("click", function(){
         //Restores all squares and reassigns colours
         squares[i].style.backgroundColor = colours[i];
         squares[i].style.display = "block";
-    }
+    h1.style.backgroundColor = "steelblue";
+}
 });
 
 //Set the "correct" colour to be displayed in the <span> tag of the <h1>
@@ -141,7 +143,7 @@ reset.addEventListener("click", function(){
     pickedColour = pickColour();
     colourDisplay.textContent = pickedColour;
     //Reset <h1> background colour
-    h1.style.backgroundColor = "#232323";
+    h1.style.backgroundColor = "steelblue";
     messageDisplay.textContent = "";
     this.textContent = "New Colours";
 });

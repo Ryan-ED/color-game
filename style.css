@@ -1,5 +1,8 @@
 body {
     background: #232323;
+    margin: 0;
+    font-family: "Montserrat";
+    text-transform: uppercase;
 }
 
 /* Each square takes up about a third of the with of the container, with some margin for spacing */
@@ -9,18 +12,35 @@ body {
     margin: 1.66%;
     padding-bottom: 30%;
     float: left;
-
+    /* Border radius for those round corners */
+    border-radius: 15%;
+    /* Transition effect when a correct colour is chosen */
+    transition: background-color 0.5s;
+    /* These add support for browsers that don't support certain CSS properties */
+    -webkit-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
 }
 
 /* Centers the div containing the squares and narrows it */
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 h1 {
     color: white;
     text-align: center;
+    background-color: steelblue;
+    margin: 0;
+    font-weight: normal;
+    line-height: 1.1;
+    padding: 20px 0;
+}
+
+/* This is the span tag that displays the current correct colour. It takes its own line and has 2x font size */
+#colourDisplay {
+    display: block;
+    font-size: 200%;
 }
 
 /* This is the horizontal bar below the h1 */
@@ -33,5 +53,34 @@ h1 {
 
 /* This class will toggle on and off depending on which button (easy or hard) is selected */
 .selected {
-    background-color: blue;
+    background-color: steelblue;
+    color: white;
+}
+
+/* Restyled the buttons. Total makeover here */
+button {
+    border: none;
+    background-color: white;
+    font-family: "Montserrat";
+    text-transform: uppercase;
+    height: 100%;
+    font-weight: bold;
+    color: steelblue;
+    letter-spacing: 1px;
+    font-size: inherit;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+}
+
+/* This creates the space in the stripe between the buttons even when the text is not present */
+#message {
+    display: inline-block;
+    width: 20%;
+}
+
+/* Hover effect for the easy/hard buttons. Matches the .selected class */
+button:hover {
+    background-color: steelblue;
+    color: white;
 }
