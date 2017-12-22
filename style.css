@@ -23,6 +23,10 @@ h1 {
     text-align: center;
 }
 
-#message {
-    color: white;
+/* This is the horizontal bar below the h1 */
+#stripe {
+    color: #232323;
+    height: 30px;
+    text-align: center;
+    background-color: white;
 }

@@ -11,6 +11,8 @@ var pickedColour = pickColour();
 var colourDisplay = document.getElementById("colourDisplay");
 //Span tag to display a message when a user clicks on a square
 var messageDisplay = document.getElementById("message");
+var h1 = document.querySelector("h1");
+var reset = document.getElementById("reset");
 
 //Set the "correct" colour to be displayed in the <span> tag of the <h1>
 colourDisplay.textContent = pickedColour;
@@ -33,7 +35,9 @@ function colourGuess(){
         messageDisplay.textContent = "Correct!";
         //Function that makes all the squares and the header the same colour as the "correct" square
         changeColours(clickedColour);
-        document.querySelector("h1").style.backgroundColor = pickedColour;
+        h1.style.backgroundColor = pickedColour;
+        //Change button text after winning
+        reset.textContent = "Play Again?";
     }
     else {
         //Changes the background colour of the square to match that of the body
@@ -74,3 +78,20 @@ function randomColour(){
 
     return "rgb(" + red + ", " + green + ", " + blue + ")";
 }
+
+//Added a click function to reset button.
+reset.addEventListener("click", function(){
+    //Generate new set of square colours
+    colours = generateColours(6);
+    //Set each square to a colour in the array
+    for(var i = 0; i < squares.length; i++){
+        squares[i].style.backgroundColor = colours[i];
+    }
+    //Set a new "correct" colour
+    pickedColour = pickColour();
+    colourDisplay.textContent = pickedColour;
+    //Reset <h1> background colour
+    h1.style.backgroundColor = "#232323";
+
+    this.textContent = "New Colours";
+});
